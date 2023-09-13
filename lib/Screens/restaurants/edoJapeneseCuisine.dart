@@ -1,62 +1,23 @@
+import 'package:provider/provider.dart';
+
+import '../../backendservices/FirebaseServices.dart';
+import 'Fujima.dart';
+import 'Sakura.dart';
+import '../cart/cartscreen.dart';
+import '../catalogue/catalogue.dart';
+import '../landingscreen/first.dart';
+import 'miyakoPanAsian.dart';
 import 'sushiRestaurant.dart';
 import 'package:flutter/material.dart';
 
-import 'Sakura.dart';
-import 'catalogue.dart';
-import 'edoJapeneseCuisine.dart';
-import 'miyakoPanAsian.dart';
-
-import 'package:provider/provider.dart';
-import 'cartscreen.dart';
-
-class CartModel extends ChangeNotifier {
-  List<CartItem> cartItems = [];
-
-  void addItem(CartItem item) {
-    int existingItemIndex = cartItems.indexWhere(
-      (cartItem) => cartItem.name == item.name,
-    );
-
-    if (existingItemIndex != -1) {
-      // If the item exists, increase its quantity
-      cartItems[existingItemIndex].quantity++;
-    } else {
-      // If the item doesn't exist, add it to the cart
-      cartItems.add(item);
-    }
-
-    notifyListeners();
-  }
-
-  void removeItem(CartItem item) {
-    cartItems.remove(item);
-    notifyListeners();
-  }
-
-  List<CartItem> getItems() {
-    return cartItems;
-  }
-}
-
-class CartItem {
-  final String name;
-  final double price;
-  int quantity; // Add a quantity field
-
-  CartItem(
-      {required this.name,
-      required this.price,
-      this.quantity = 1}); // Initialize quantity with 1
-}
-
-class Fujima extends StatefulWidget {
-  const Fujima({super.key});
+class EdoJapanese extends StatefulWidget {
+  const EdoJapanese({super.key});
 
   @override
-  State<Fujima> createState() => _FujimaState();
+  State<EdoJapanese> createState() => _EdoJapaneseState();
 }
 
-class _FujimaState extends State<Fujima> {
+class _EdoJapaneseState extends State<EdoJapanese> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +46,7 @@ class _FujimaState extends State<Fujima> {
                 width: 10,
               ),
               Text(
-                "Karachi", // Replace with your desired text
+                "Restaurants", // Replace with your desired text
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -93,7 +54,7 @@ class _FujimaState extends State<Fujima> {
                 ),
               ),
               SizedBox(
-                width: 230,
+                width: 165,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -105,7 +66,7 @@ class _FujimaState extends State<Fujima> {
                   radius: 23,
                   backgroundColor: Color(0xFFFF5C00), // Orange background
                   child: Icon(
-                    Icons.search,
+                    Icons.food_bank,
                     color: Colors.white,
                   ),
                 ),
@@ -126,6 +87,56 @@ class _FujimaState extends State<Fujima> {
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFFF5C00), // Set the background color here
                     fixedSize:
+                        Size(250, 30), // Set the desired width and height
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              EdoJapanese()), // Replace NextScreen with the actual name of your next screen widget
+                    );
+                  },
+                  child: Text(
+                    'Edo Japanese Cuisine',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white, // Set the background color here
+                    fixedSize:
+                        Size(200, 30), // Set the desired width and height
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Miyako()), // Replace NextScreen with the actual name of your next screen widget
+                    );
+                  },
+                  child: Text(
+                    'Miyako Pan Asian',
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white, // Set the background color here
+                    fixedSize:
                         Size(125, 30), // Set the desired width and height
                   ),
                   onPressed: () {
@@ -140,7 +151,7 @@ class _FujimaState extends State<Fujima> {
                     'Fujiyama',
                     style: TextStyle(
                         fontSize: 17,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -196,56 +207,6 @@ class _FujimaState extends State<Fujima> {
                 SizedBox(
                   width: 10,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white, // Set the background color here
-                    fixedSize:
-                        Size(200, 30), // Set the desired width and height
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              Miyako()), // Replace NextScreen with the actual name of your next screen widget
-                    );
-                  },
-                  child: Text(
-                    'Miyako Pan Asian',
-                    style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white, // Set the background color here
-                    fixedSize:
-                        Size(250, 30), // Set the desired width and height
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              EdoJapanese()), // Replace NextScreen with the actual name of your next screen widget
-                    );
-                  },
-                  child: Text(
-                    'Edo Japanese Cuisine',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
               ],
             ),
           ),
@@ -273,7 +234,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 3.png"),
+                                  image: AssetImage("assets/Frame 26.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -289,12 +250,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'DISH YAKI SOBA'; // Replace with actual item name
+                                      'NAGOYA WINGS'; // Replace with actual item name
                                   double itemPrice =
                                       50; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice.toStringAsFixed(2)}',
@@ -319,7 +290,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 4.png"),
+                                  image: AssetImage("assets/Frame 27.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -335,12 +306,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'MACKEREL FISH'; // Replace with actual item name
+                                      'BEEF RAMEN'; // Replace with actual item name
                                   double itemPrice =
                                       60; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice1.toStringAsFixed(2)}',
@@ -365,7 +346,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 5.png"),
+                                  image: AssetImage("assets/Frame 28.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -381,12 +362,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'MILLE FEUILLE'; // Replace with actual item name
+                                      'CAESAR SALAD'; // Replace with actual item name
                                   double itemPrice =
                                       70; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice2.toStringAsFixed(2)}',
@@ -411,7 +402,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 6.png"),
+                                  image: AssetImage("assets/Frame 29.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -427,12 +418,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'RICE BALLS'; // Replace with actual item name
+                                      'MIX ITEMS'; // Replace with actual item name
                                   double itemPrice =
                                       80; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice3.toStringAsFixed(2)}',
@@ -457,7 +458,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 7.png"),
+                                  image: AssetImage("assets/Frame 30.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -473,12 +474,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'SUSHI SASHIMI'; // Replace with actual item name
+                                      'MISO SOUP'; // Replace with actual item name
                                   double itemPrice =
                                       90; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice4.toStringAsFixed(2)}',
@@ -503,7 +514,7 @@ class _FujimaState extends State<Fujima> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 2.png"),
+                                  image: AssetImage("assets/Frame 31.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -519,12 +530,22 @@ class _FujimaState extends State<Fujima> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'JAPANESE CUISINE'; // Replace with actual item name
+                                      'PAN ASIAN'; // Replace with actual item name
                                   double itemPrice =
                                       100; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice5.toStringAsFixed(2)}',
@@ -571,18 +592,18 @@ class _FujimaState extends State<Fujima> {
                           icon: Icon(
                             size: 30,
                             Icons.home, // Shopping cart icon
-                            color: Color(0xFFFF5C00),
+                            color: Colors.black,
                           ),
                         ),
                         IconButton(
                           onPressed: () {
-                            // Add your onPressed logic here
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       Catalogue()), // Replace NextScreen with the actual name of your next screen widget
                             );
+                            // Add your onPressed logic here
                           },
                           icon: Icon(
                             size: 30,
@@ -605,6 +626,21 @@ class _FujimaState extends State<Fujima> {
                             size: 30,
 
                             Icons.shopping_cart, // Shopping cart icon
+                            color: Colors.black,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            await FirebaseServices().signOut();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => First())));
+                          },
+                          icon: Icon(
+                            size: 30,
+
+                            Icons.logout, // Shopping cart icon
                             color: Colors.black,
                           ),
                         ),

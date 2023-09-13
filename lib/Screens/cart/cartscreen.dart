@@ -1,13 +1,7 @@
-import 'sushiRestaurant.dart';
+import 'package:flutter_application_1/Screens/restaurants/Fujima.dart';
 import 'package:flutter/material.dart';
-import 'edoJapeneseCuisine.dart';
-import 'Fujima.dart';
-import 'Sakura.dart';
-import 'miyakoPanAsian.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_application_1/main.dart';
-import 'catalogue.dart';
-import 'map.dart';
+import '../maps/map.dart';
 
 class CartScreen extends StatelessWidget {
   @override
@@ -70,7 +64,7 @@ class CartScreen extends StatelessWidget {
                             Text(
                               cartItem.name,
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
+                                  TextStyle(color: Colors.white, fontSize: 15),
                             ),
                             Row(
                               children: [
@@ -163,7 +157,7 @@ class CartScreen extends StatelessWidget {
                             'WE DO ONLY C.O.D! ',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 22,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -172,7 +166,7 @@ class CartScreen extends StatelessWidget {
                               'GO TO MAP.',
                               style: TextStyle(
                                 color: Color(0xFFFF5C00),
-                                fontSize: 22,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

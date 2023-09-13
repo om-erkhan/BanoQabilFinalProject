@@ -1,22 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'cartscreen.dart';
-import 'sushiRestaurant.dart';
-import 'package:flutter/material.dart';
-
+import '../../backendservices/FirebaseServices.dart';
 import 'Fujima.dart';
-import 'catalogue.dart';
+import 'Sakura.dart';
+import '../cart/cartscreen.dart';
+import '../catalogue/catalogue.dart';
 import 'edoJapeneseCuisine.dart';
+import '../landingscreen/first.dart';
 import 'miyakoPanAsian.dart';
 
-class Sakura extends StatefulWidget {
-  const Sakura({super.key});
+class Sushi extends StatefulWidget {
+  const Sushi({super.key});
 
   @override
-  State<Sakura> createState() => _SakuraState();
+  State<Sushi> createState() => _SushiState();
 }
 
-class _SakuraState extends State<Sakura> {
+class _SushiState extends State<Sushi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +46,7 @@ class _SakuraState extends State<Sakura> {
                 width: 10,
               ),
               Text(
-                "Karachi", // Replace with your desired text
+                "Restaurants", // Replace with your desired text
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -53,7 +54,7 @@ class _SakuraState extends State<Sakura> {
                 ),
               ),
               SizedBox(
-                width: 230,
+                width: 165,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -65,7 +66,7 @@ class _SakuraState extends State<Sakura> {
                   radius: 23,
                   backgroundColor: Color(0xFFFF5C00), // Orange background
                   child: Icon(
-                    Icons.search,
+                    Icons.food_bank,
                     color: Colors.white,
                   ),
                 ),
@@ -85,18 +86,19 @@ class _SakuraState extends State<Sakura> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFFF5C00), // Set the background color here
-                    fixedSize: Size(110, 0), // Set the desired width and height
+                    fixedSize:
+                        Size(190, 30), // Set the desired width and height
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Sakura()), // Replace NextScreen with the actual name of your next screen widget
+                              Sushi()), // Replace NextScreen with the actual name of your next screen widget
                     );
                   },
                   child: Text(
-                    'Sakura',
+                    'Sushi restaurant',
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,
@@ -134,19 +136,18 @@ class _SakuraState extends State<Sakura> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white, // Set the background color here
-                    fixedSize:
-                        Size(190, 30), // Set the desired width and height
+                    fixedSize: Size(110, 0), // Set the desired width and height
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Sushi()), // Replace NextScreen with the actual name of your next screen widget
+                              Sakura()), // Replace NextScreen with the actual name of your next screen widget
                     );
                   },
                   child: Text(
-                    'Sushi restaurant',
+                    'Sakura',
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.black,
@@ -233,7 +234,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 8.png"),
+                                  image: AssetImage("assets/Frame 14.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -249,12 +250,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'SAKURA STAKES'; // Replace with actual item name
+                                      'FRESH SALMON '; // Replace with actual item name
                                   double itemPrice =
                                       50; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice.toStringAsFixed(2)}',
@@ -279,7 +290,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 9.png"),
+                                  image: AssetImage("assets/Frame 15.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -295,12 +306,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'RICE MEAT BALLS'; // Replace with actual item name
+                                      'CHEESE BALLS '; // Replace with actual item name
                                   double itemPrice =
                                       60; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice1.toStringAsFixed(2)}',
@@ -325,7 +346,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 10.png"),
+                                  image: AssetImage("assets/Frame 16.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -341,12 +362,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'RICE CUISINE'; // Replace with actual item name
+                                      'SPRING ROLLS'; // Replace with actual item name
                                   double itemPrice =
                                       70; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice2.toStringAsFixed(2)}',
@@ -371,7 +402,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 11.png"),
+                                  image: AssetImage("assets/Frame 17.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -387,12 +418,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'GARLIC SALAD'; // Replace with actual item name
+                                      'PRAWN NIGRI'; // Replace with actual item name
                                   double itemPrice =
                                       80; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice3.toStringAsFixed(2)}',
@@ -417,7 +458,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 12.png"),
+                                  image: AssetImage("assets/Frame 18.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -433,12 +474,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'THAI CURRY'; // Replace with actual item name
+                                      'TIGER PRAWNS'; // Replace with actual item name
                                   double itemPrice =
                                       90; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice4.toStringAsFixed(2)}',
@@ -463,7 +514,7 @@ class _SakuraState extends State<Sakura> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 13.png"),
+                                  image: AssetImage("assets/Frame 19.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -479,12 +530,22 @@ class _SakuraState extends State<Sakura> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'SHRIMP ROLL'; // Replace with actual item name
+                                      'TUNA NIGRI'; // Replace with actual item name
                                   double itemPrice =
                                       100; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice5.toStringAsFixed(2)}',
@@ -565,6 +626,21 @@ class _SakuraState extends State<Sakura> {
                             size: 30,
 
                             Icons.shopping_cart, // Shopping cart icon
+                            color: Colors.black,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            await FirebaseServices().signOut();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => First())));
+                          },
+                          icon: Icon(
+                            size: 30,
+
+                            Icons.logout, // Shopping cart icon
                             color: Colors.black,
                           ),
                         ),

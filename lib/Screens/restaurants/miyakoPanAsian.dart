@@ -1,21 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../backendservices/FirebaseServices.dart';
+import '../cart/cartscreen.dart';
+import '../landingscreen/first.dart';
 import 'Fujima.dart';
-import 'Sakura.dart';
-import 'cartscreen.dart';
-import 'catalogue.dart';
-import 'edoJapeneseCuisine.dart';
-import 'miyakoPanAsian.dart';
+import 'sushiRestaurant.dart';
+import 'package:flutter/material.dart';
 
-class Sushi extends StatefulWidget {
-  const Sushi({super.key});
+import 'Sakura.dart';
+import '../catalogue/catalogue.dart';
+import 'edoJapeneseCuisine.dart';
+
+class Miyako extends StatefulWidget {
+  const Miyako({super.key});
 
   @override
-  State<Sushi> createState() => _SushiState();
+  State<Miyako> createState() => _MiyakoState();
 }
 
-class _SushiState extends State<Sushi> {
+class _MiyakoState extends State<Miyako> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +47,7 @@ class _SushiState extends State<Sushi> {
                 width: 10,
               ),
               Text(
-                "Karachi", // Replace with your desired text
+                "Restaurants", // Replace with your desired text
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -52,7 +55,7 @@ class _SushiState extends State<Sushi> {
                 ),
               ),
               SizedBox(
-                width: 230,
+                width: 165,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -64,7 +67,7 @@ class _SushiState extends State<Sushi> {
                   radius: 23,
                   backgroundColor: Color(0xFFFF5C00), // Orange background
                   child: Icon(
-                    Icons.search,
+                    Icons.food_bank,
                     color: Colors.white,
                   ),
                 ),
@@ -85,18 +88,18 @@ class _SushiState extends State<Sushi> {
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFFF5C00), // Set the background color here
                     fixedSize:
-                        Size(190, 30), // Set the desired width and height
+                        Size(200, 30), // Set the desired width and height
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Sushi()), // Replace NextScreen with the actual name of your next screen widget
+                              Miyako()), // Replace NextScreen with the actual name of your next screen widget
                     );
                   },
                   child: Text(
-                    'Sushi restaurant',
+                    'Miyako Pan Asian',
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,
@@ -159,18 +162,18 @@ class _SushiState extends State<Sushi> {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white, // Set the background color here
                     fixedSize:
-                        Size(200, 30), // Set the desired width and height
+                        Size(190, 30), // Set the desired width and height
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Miyako()), // Replace NextScreen with the actual name of your next screen widget
+                              Sushi()), // Replace NextScreen with the actual name of your next screen widget
                     );
                   },
                   child: Text(
-                    'Miyako Pan Asian',
+                    'Sushi restaurant',
                     style: TextStyle(
                         fontSize: 17,
                         color: Colors.black,
@@ -232,7 +235,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 14.png"),
+                                  image: AssetImage("assets/Frame 20.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -248,12 +251,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'FRESH SALMON '; // Replace with actual item name
+                                      'SOYA BEEF '; // Replace with actual item name
                                   double itemPrice =
                                       50; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice.toStringAsFixed(2)}',
@@ -278,7 +291,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 15.png"),
+                                  image: AssetImage("assets/Frame 21.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -294,12 +307,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'CHEESE BALLS '; // Replace with actual item name
+                                      'NOODLE BOWL'; // Replace with actual item name
                                   double itemPrice =
                                       60; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice1.toStringAsFixed(2)}',
@@ -324,7 +347,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 16.png"),
+                                  image: AssetImage("assets/Frame 22.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -340,12 +363,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'SPRING ROLLS'; // Replace with actual item name
+                                      'WONTON'; // Replace with actual item name
                                   double itemPrice =
                                       70; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice2.toStringAsFixed(2)}',
@@ -370,7 +403,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 17.png"),
+                                  image: AssetImage("assets/Frame 23.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -386,12 +419,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'PRAWN NIGRI'; // Replace with actual item name
+                                      'DRAGON CHICKEN'; // Replace with actual item name
                                   double itemPrice =
                                       80; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice3.toStringAsFixed(2)}',
@@ -416,7 +459,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 18.png"),
+                                  image: AssetImage("assets/Frame 24.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -432,12 +475,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'TIGER PRAWNS'; // Replace with actual item name
+                                      'FIRE CHICKEN'; // Replace with actual item name
                                   double itemPrice =
                                       90; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice4.toStringAsFixed(2)}',
@@ -462,7 +515,7 @@ class _SushiState extends State<Sushi> {
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     30.0)), // Adjust the value as needed
                                 image: DecorationImage(
-                                  image: AssetImage("assets/Frame 19.png"),
+                                  image: AssetImage("assets/Frame 25.png"),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -478,12 +531,22 @@ class _SushiState extends State<Sushi> {
                                 ),
                                 onPressed: () {
                                   String itemName =
-                                      'TUNA NIGRI'; // Replace with actual item name
+                                      'BBQ CHICKEN'; // Replace with actual item name
                                   double itemPrice =
                                       100; // Replace with actual item price
                                   CartItem cartItem = CartItem(
                                       name: itemName, price: itemPrice);
                                   context.read<CartModel>().addItem(cartItem);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('$itemName added to cart.'),
+                                      duration: Duration(
+                                          seconds:
+                                              2), // Adjust the duration as needed
+                                      behavior: SnackBarBehavior.fixed,
+                                      // This makes it appear at the top
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   '\$ ${itemPrice5.toStringAsFixed(2)}',
@@ -564,6 +627,21 @@ class _SushiState extends State<Sushi> {
                             size: 30,
 
                             Icons.shopping_cart, // Shopping cart icon
+                            color: Colors.black,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            await FirebaseServices().signOut();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => First())));
+                          },
+                          icon: Icon(
+                            size: 30,
+
+                            Icons.logout, // Shopping cart icon
                             color: Colors.black,
                           ),
                         ),

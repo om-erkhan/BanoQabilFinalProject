@@ -7,6 +7,8 @@ import 'dart:convert';
 import 'package:uuid/uuid.dart';
 import 'package:geocoding/geocoding.dart';
 
+import '../splashscreen/confirm.dart';
+
 class MarkerProvider with ChangeNotifier {
   List<Marker> markers = [];
 
@@ -215,7 +217,7 @@ class _MapState extends State<Map> {
                   },
                   myLocationEnabled: true,
                   myLocationButtonEnabled: true,
-                  padding: EdgeInsets.only(top: 570, left: 16),
+                  // padding: EdgeInsets.only(top: 510, left: 16),
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
@@ -233,6 +235,12 @@ class _MapState extends State<Map> {
                       ),
                       onPressed: () {
                         // Add your onPressed logic here
+
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => SplashScreen(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'CONFIRM YOUR ORDER?',

@@ -1,44 +1,10 @@
-import 'sushiRestaurant.dart';
+import 'package:flutter_application_1/Screens/restaurants/Fujima.dart';
+
+import '../../backendservices/FirebaseServices.dart';
+import '../landingscreen/first.dart';
 import 'package:flutter/material.dart';
-import 'edoJapeneseCuisine.dart';
-import 'Fujima.dart';
-import 'Sakura.dart';
-import 'miyakoPanAsian.dart';
 import 'package:provider/provider.dart';
-import 'cartscreen.dart';
-/*
-class CartModel extends ChangeNotifier {
-  List<CartItem> cartItems = [];
-
-   void addItem(CartItem item) {
-    int existingItemIndex = cartItems.indexWhere(
-      (cartItem) => cartItem.name == item.name,
-    );
-
-    if (existingItemIndex != -1) {
-      // If the item exists, increase its quantity
-      cartItems[existingItemIndex].quantity++;
-    } else {
-      // If the item doesn't exist, add it to the cart
-      cartItems.add(item);
-    }
-
-    notifyListeners();
-  } 
-
-  List<CartItem> getItems() {
-    return cartItems;
-  }
-}
-
-class CartItem {
-  final String name;
-  final double price;
-  int quantity; // Add a quantity field
-
-  CartItem({required this.name, required this.price, this.quantity = 1}); // Initialize quantity with 1
-}
-*/
+import '../cart/cartscreen.dart';
 
 class Catalogue extends StatefulWidget {
   const Catalogue({Key? key}) : super(key: key);
@@ -124,11 +90,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -171,11 +148,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice1.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -223,11 +211,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -270,11 +269,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice1.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -322,11 +332,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice1.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -369,11 +390,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice2.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -421,11 +453,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice1.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -468,11 +511,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice2.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -520,11 +574,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice4.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 19,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -567,11 +632,22 @@ class _CatalogueState extends State<Catalogue> {
                                     CartItem cartItem = CartItem(
                                         name: itemName, price: itemPrice);
                                     context.read<CartModel>().addItem(cartItem);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('$itemName added to cart.'),
+                                        duration: Duration(
+                                            seconds:
+                                                2), // Adjust the duration as needed
+                                        behavior: SnackBarBehavior.fixed,
+                                        // This makes it appear at the top
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '\$ ${itemPrice5.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 17,
                                       color: Colors.black,
                                     ),
                                   ),
@@ -649,6 +725,21 @@ class _CatalogueState extends State<Catalogue> {
                             size: 30,
 
                             Icons.shopping_cart, // Shopping cart icon
+                            color: Colors.black,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            await FirebaseServices().signOut();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) => First())));
+                          },
+                          icon: Icon(
+                            size: 30,
+
+                            Icons.logout, // Shopping cart icon
                             color: Colors.black,
                           ),
                         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'Fujima.dart';
+import 'package:flutter_application_1/Screens/restaurants/Fujima.dart';
+import 'package:flutter_application_1/backendservices/FirebaseServices.dart';
 
 class First extends StatefulWidget {
   const First({super.key});
@@ -31,7 +31,9 @@ class _FirstState extends State<First> {
               primary: Color(0xFFFF5C00), // Set the background color here
               fixedSize: Size(300, 60), // Set the desired width and height
             ),
-            onPressed: () {
+            onPressed: () async {
+              await FirebaseServices().signInWithGoogle();
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -39,8 +41,8 @@ class _FirstState extends State<First> {
                         Fujima()), // Replace NextScreen with the actual name of your next screen widget
               );
             },
-            child: Text(
-              'Reserve a table',
+            child: const Text(
+              'Sign in with Google',
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
